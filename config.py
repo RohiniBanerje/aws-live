@@ -1,0 +1,6 @@
+customhost = "projdb.cdgunapenc3f.us-east-1.rds.amazonaws.com"
+customuser = "admin"
+custompass = "admin123"
+customdb = "projDB"
+custombucket = "add-proj-employee"
+customregion = "us-east-1"
