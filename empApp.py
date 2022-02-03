@@ -40,7 +40,7 @@ def AddEmp():
     print(pri_skill)
     location = request.form['location']
     print(location)
-    emp_image_file = request.form['emp_image_file']
+    emp_image_file = request.files['emp_image_file']
     print(emp_image_file)
 
     insert_sql = "INSERT INTO employee VALUES(%s, %s, %s, %s, %s)"
