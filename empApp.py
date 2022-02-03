@@ -35,9 +35,13 @@ def AddEmp():
     first_name = request.form['first_name']
     print(first_name)
     last_name = request.form['last_name']
+    print(last_name)
     pri_skill = request.form['pri_skill']
+    print(pri_skill)
     location = request.form['location']
+    print(location)
     emp_image_file = request.form['emp_image_file']
+    print(emp_image_file)
 
     insert_sql = "INSERT INTO employee VALUES('emp_id', 'first_name', 'last_name', 'pri_skill', 'location')"
     cursor = db_conn.cursor()
@@ -46,7 +50,7 @@ def AddEmp():
         return "Please select a file"
 
     try:
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql, (emp_id, fname, lname, pri_skill, location))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
