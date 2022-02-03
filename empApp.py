@@ -46,8 +46,8 @@ def AddEmp():
     insert_sql = "INSERT INTO employee VALUES('emp_id', 'first_name', 'last_name', 'pri_skill', 'location')"
     cursor = db_conn.cursor()
 
-    if emp_image_file.filename == "":
-        return "Please select a file"
+    # if emp_image_file.filename == "":
+    #     return "Please select a file"
 
     try:
         cursor.execute(insert_sql, (emp_id, fname, lname, pri_skill, location))
