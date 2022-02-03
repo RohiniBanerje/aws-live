@@ -40,8 +40,8 @@ def AddEmp():
     print(pri_skill)
     location = request.form['location']
     print(location)
-    emp_image_file = request.form['emp_image_file']
-    print(emp_image_file)
+    #emp_image_file = request.form['emp_image_file']
+    #print(emp_image_file)
 
     insert_sql = "INSERT INTO employee VALUES('emp_id', 'first_name', 'last_name', 'pri_skill', 'location')"
     cursor = db_conn.cursor()
@@ -54,23 +54,23 @@ def AddEmp():
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
-        s3 = boto3.resource('s3')
-
-        try:
-            print("Data inserted into RDS.. uploading image in S3..")
-            s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
-            bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
-            s3_location = (bucket_location['LocationConstraint'])
-
-            if s3_location is None:
-                s3_location = ''
-            else:
-                s3_location = '-' + s3_location
-
-            object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(s3_location, custombucket, emp_image_file_name_in_s3)
-
-        except Exception as e:
-            return str(e)
+        # s3 = boto3.resource('s3')
+        #
+        # try:
+        #     print("Data inserted into RDS.. uploading image in S3..")
+        #     s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
+        #     bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+        #     s3_location = (bucket_location['LocationConstraint'])
+        #
+        #     if s3_location is None:
+        #         s3_location = ''
+        #     else:
+        #         s3_location = '-' + s3_location
+        #
+        #     object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(s3_location, custombucket, emp_image_file_name_in_s3)
+        #
+        # except Exception as e:
+        #     return str(e)
 
     finally:
         cursor.close()
