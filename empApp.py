@@ -31,7 +31,9 @@ def about():
 @app.route("/addemp", methods=['GET', 'POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
+    print(emp_id)
     first_name = request.form['first_name']
+    print(first_name)
     last_name = request.form['last_name']
     pri_skill = request.form['pri_skill']
     location = request.form['location']
